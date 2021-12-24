@@ -1,0 +1,15 @@
+<!--
+ - Created by Ivan.Sokolov on 07.12.2021.
+ -->
+
+<!-- Contact List -->
+<template>
+    <template for:each={contacts} for:item="contact">
+        <label key={contact.Id}> <b>Contact ID: {contact.Id}</b></label>
+        <c-contact
+            key={contact.Id}
+            contact= {contact}
+            >
+        </c-contact>
+    </template>
+</template>

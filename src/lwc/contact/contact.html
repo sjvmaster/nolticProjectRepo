@@ -1,0 +1,14 @@
+<!--
+ - Created by Ivan.Sokolov on 07.12.2021.
+ -->
+
+<!-- Contact -->
+<template>
+    <ul>
+        <template for:each={contactFields} for:item=contact_field>
+            <li key={contact_field.field}>
+                <label>{contact_field.field}: </label> <span>{contact_field.field_value}</span>
+            </li>
+        </template>
+    </ul>
+</template>

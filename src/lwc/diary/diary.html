@@ -1,0 +1,27 @@
+<!--
+ - Created by Ivan.Sokolov on 14.12.2021.
+ -->
+
+<!-- Diary -->
+<template>
+    <lightning-card title='Diary'>
+        <template if:true={diaryNotes.data}>
+            <ul class='slds-box'>
+                <template for:each={diaryNotes.data} for:item='diaryNote'>
+                    <li key={diaryNote.Id}>
+                        <c-diary-note
+                                key={diaryNote.Id}
+                                diary= {diaryNote}
+                                ondiarynotedeleted={handleDiaryNoteDeleted}
+                        >
+                        </c-diary-note >
+                    </li>
+                </template>
+            </ul>
+            <div class='slds-p-left_medium'>
+                <lightning-input label='New Note:' onchange={handleNoteChange} data-id="clear"></lightning-input>
+                <lightning-button variant='brand' label="Add" onclick={addDiaryNote}></lightning-button>
+            </div>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,26 @@
+<!--
+ - Created by Ivan.Sokolov on 02.12.2021.
+ -->
+
+<!-- Lead Product -->
+<template>
+    <lightning-card title="Lead Products" icon-name="standard:products">
+        <ul class="slds-p-around_medium">
+            <template if:true={isProducts}> 
+                <template for:each={products} for:item="product">
+                    <li key={product.Id} class="slds-p-around_medium">
+                        <b>Brand</b>: {product.Brand}<br>
+                        <b>Color</b>: {product.Color}<br>
+                        <template if:true ={product.Price}>
+                            <b>Price</b>: {product.Price}<br>
+                        </template>
+
+                    </li>
+                </template>
+            </template>
+            <template if:false={isProducts}>
+                No products available.
+            </template>
+        </ul>
+    </lightning-card>
+</template>

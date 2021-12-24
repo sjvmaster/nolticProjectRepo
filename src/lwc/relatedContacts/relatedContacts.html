@@ -1,0 +1,28 @@
+<!--
+ - Created by Ivan.Sokolov on 11.12.2021.
+ -->
+
+<!-- Related Contacts -->
+<template>
+    <lightning-card title='Related Contacts'>
+        <template if:true={contacts.data}>
+            <ul class='slds-p-left_medium'>
+                <template for:each={contacts.data} for:item='contact'>
+                    <li key={contact.Id} class="slds-p-bottom_medium">
+                        <c-related-contact-child
+                            key={contact.Id}
+                            contact={contact}>
+                        </c-related-contact-child>
+                    </li>
+                </template>
+            </ul>
+            <div class='slds-p-left_medium'>
+                <lightning-button label="Add Contact" onclick={addContact}></lightning-button>
+                <template if:true={showContactForm}>
+                    <lightning-input label='Last Name' onchange={handleLastNameChange}></lightning-input>
+                    <lightning-button label="Save Contact" onclick={createContact}></lightning-button>
+                </template>
+            </div>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,14 @@
+<!--
+ - Created by Ivan.Sokolov on 14.12.2021.
+ -->
+
+<!-- Diary Note -->
+<template>
+    <template if:true={diary}>
+        <div class="slds-box">
+            <b>Created Date: </b> {diary.Created_Date__c} <br>
+            <b>Note: </b> {diary.Note__c} <br>
+            <lightning-button variant="brand" label="Delete" onclick={handleDeleteClick}></lightning-button>
+        </div>
+    </template>
+</template>

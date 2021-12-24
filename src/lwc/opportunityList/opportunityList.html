@@ -1,0 +1,29 @@
+<!--
+ - Created by Ivan.Sokolov on 07.12.2021.
+ -->
+
+<!-- Opportunity List -->
+<template>
+    <lightning-card title='Opportunities'>
+        <template if:true={opportunities.data}>
+            <ul class='slds-p-left_medium'>
+                <template for:each={opportunities.data} for:item='opportunity'>
+                    <li key={opportunity.Id} class="slds-p-bottom_medium">
+                        <b>Name: </b> {opportunity.Name} <br>
+                        <b>Stage: </b> {opportunity.StageName} <br>
+                        <b>Amount: </b> {opportunity.Amount} <br>
+                        <b>Close Date: </b> {opportunity.CloseDate} <br>
+                    </li>
+                </template>
+            </ul>
+            <div class='slds-p-left_medium'>
+                <lightning-button label="Add Opportunity" onclick={addOpportunity}></lightning-button>
+                <template if:true={showOpportunityForm}>
+                    <lightning-input label='Name' onchange={handleNameChange}></lightning-input>
+                    <lightning-button label="Create Opportunity" onclick={createOpportunity}></lightning-button>
+                </template>
+
+            </div>
+        </template>
+    </lightning-card>
+</template>
