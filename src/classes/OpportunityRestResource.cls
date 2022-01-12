@@ -189,4 +189,3 @@ global with sharing class OpportunityRestResource {
         res.responseBody = Blob.valueOf('Opportunity ' + opportunityId + 'was deleted');
     }
 }
-

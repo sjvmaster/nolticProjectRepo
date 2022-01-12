@@ -1,7 +1,7 @@
 /**
  * Created by Ivan.Sokolov on 28.12.2021.
  */
-
+ 
 public class AccountNameChanger implements Database.Batchable<SObject>{
     public Database.QueryLocator start(Database.BatchableContext ctx){
         return Database.getQueryLocator([SELECT Id, Name FROM Account]);

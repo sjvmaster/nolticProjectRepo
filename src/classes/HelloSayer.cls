@@ -3,7 +3,6 @@
  */
 
 public interface HelloSayer {
-
     String sayHello(String name);
 
 }
