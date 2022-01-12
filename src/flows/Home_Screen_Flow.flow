@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <decisions>
+        <name>Check_Price</name>
+        <label>Check Price</label>
+        <locationX>360</locationX>
+        <locationY>387</locationY>
+        <defaultConnector>
+            <targetReference>Rent_Price_OK</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>GreaterThan1000</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Rent_Price</leftValueReference>
+                <operator>GreaterThan</operator>
+                <rightValue>
+                    <numberValue>1000.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Price_Too_Big</targetReference>
+            </connector>
+            <label>Greater Than 1000</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Home Screen Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Home Screen Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Home_Screen</name>
+        <label>Home Screen</label>
+        <locationX>335</locationX>
+        <locationY>217</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Check_Price</targetReference>
+        </connector>
+        <fields>
+            <name>Rent_Price</name>
+            <dataType>Number</dataType>
+            <fieldText>Rent Price</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
+        <fields>
+            <name>address_field</name>
+            <extensionName>flowruntime:address</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Price_Too_Big</name>
+        <label>Price Too Big</label>
+        <locationX>700</locationX>
+        <locationY>462</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>price_label</name>
+            <fieldText>&lt;p&gt;Rent price is greater than 1000. Too big&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Rent_Price_OK</name>
+        <label>Rent Price OK</label>
+        <locationX>97</locationX>
+        <locationY>469</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Rent_Price_OK_Text</name>
+            <fieldText>&lt;p&gt;Rent Price OK&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>53</locationX>
+        <locationY>52</locationY>
+        <connector>
+            <targetReference>Home_Screen</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Salesforce CMS</label>
+    <navType>Console</navType>
+    <tabs>standard-CmsAuthorHome</tabs>
+    <tabs>standard-CmsChannel</tabs>
+    <tabs>standard-CmsWorkspaces</tabs>
+    <tabs>standard-CmsExperiences</tabs>
+    <tabs>PropertyHW__c</tabs>
+    <tabs>PaymentHW__c</tabs>
+    <tabs>Gym_Visits__c</tabs>
+    <tabs>Country__c</tabs>
+    <uiType>Lightning</uiType>
+    <workspaceConfig>
+        <mappings>
+            <tab>Country__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Gym_Visits__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PaymentHW__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PropertyHW__c</tab>
+        </mappings>
+        <mappings>
+            <tab>standard-CmsAuthorHome</tab>
+        </mappings>
+        <mappings>
+            <tab>standard-CmsChannel</tab>
+        </mappings>
+        <mappings>
+            <tab>standard-CmsExperiences</tab>
+        </mappings>
+        <mappings>
+            <tab>standard-CmsWorkspaces</tab>
+        </mappings>
+    </workspaceConfig>
+</CustomApplication>

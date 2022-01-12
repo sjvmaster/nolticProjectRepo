@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>53.0</apiVersion>
+    <decisions>
+        <name>Is_Golden_Card</name>
+        <label>Is Golden Card</label>
+        <locationX>488</locationX>
+        <locationY>268</locationY>
+        <defaultConnector>
+            <targetReference>Create_New_Visit</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Gold</defaultConnectorLabel>
+        <rules>
+            <name>Gold_Card</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Card_Type</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Gold</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Select_Trainer_Screen</targetReference>
+            </connector>
+            <label>Gold Card</label>
+        </rules>
+    </decisions>
+    <dynamicChoiceSets>
+        <name>CardTypes</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Card_Type__c</picklistField>
+        <picklistObject>Gym_Visits__c</picklistObject>
+    </dynamicChoiceSets>
+    <interviewLabel>Register New Gym Visit Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Register New Gym Visit Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_New_Visit</name>
+        <label>Create New Visit</label>
+        <locationX>475</locationX>
+        <locationY>606</locationY>
+        <inputAssignments>
+            <field>Card_Type__c</field>
+            <value>
+                <elementReference>Card_Type</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Date__c</field>
+            <value>
+                <elementReference>Visit_Date</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Gym_Visits__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_New_Visit_Trainer</name>
+        <label>Create New Visit</label>
+        <locationX>819</locationX>
+        <locationY>534</locationY>
+        <inputAssignments>
+            <field>Card_Type__c</field>
+            <value>
+                <elementReference>Card_Type</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Date__c</field>
+            <value>
+                <elementReference>Visit_Date</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>TrainerName__c</field>
+            <value>
+                <elementReference>TrainerLookup.recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Gym_Visits__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <screens>
+        <name>Register_Gym_Visit</name>
+        <label>Register Gym Visit</label>
+        <locationX>176</locationX>
+        <locationY>267</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Is_Golden_Card</targetReference>
+        </connector>
+        <fields>
+            <name>Visit_Date</name>
+            <dataType>Date</dataType>
+            <fieldText>Visit Date</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Card_Type</name>
+            <choiceReferences>CardTypes</choiceReferences>
+            <dataType>String</dataType>
+            <defaultValue>
+                <stringValue>Silver</stringValue>
+            </defaultValue>
+            <fieldText>Card Type</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Select_Trainer_Screen</name>
+        <label>Select Trainer Screen</label>
+        <locationX>818</locationX>
+        <locationY>264</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Create_New_Visit_Trainer</targetReference>
+        </connector>
+        <fields>
+            <name>TrainerLookup</name>
+            <extensionName>flowruntime:lookup</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>fieldApiName</name>
+                <value>
+                    <stringValue>Contact__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Trainer Name</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>objectApiName</name>
+                <value>
+                    <stringValue>Gym_Visits__c</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Register_Gym_Visit</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

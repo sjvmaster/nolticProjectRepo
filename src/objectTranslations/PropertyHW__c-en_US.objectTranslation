@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PropertyHW</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PropertiesHW</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- PropertiesHW --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Address --></label>
+        <name>Address__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available From --></label>
+        <name>Available_From__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available To --></label>
+        <name>Available_To__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cheapest --></label>
+        <name>Cheapest__c</name>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Duplicate --></label>
+        <name>Duplicate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Price --></label>
+        <name>Price__c</name>
+    </fields>
+    <fields>
+        <label><!-- Property Image --></label>
+        <name>Property_Image__c</name>
+    </fields>
+    <fields>
+        <label><!-- Property Title --></label>
+        <name>Property_Title__c</name>
+    </fields>
+    <layouts>
+        <layout>PropertyHW Rent Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PropertyHW Sale Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Rent --></label>
+        <name>Rent</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Sale --></label>
+        <name>Sale</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Available_Due cannot be before Available From --></errorMessage>
+        <name>AvailableFromToConsistency</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Price cannot be less than Zero --></errorMessage>
+        <name>PriceNonNegative</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Price cannot be empty --></errorMessage>
+        <name>PriceNotEmpty</name>
+    </validationRules>
+</CustomObjectTranslation>
